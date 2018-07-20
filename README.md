@@ -1,8 +1,8 @@
 # Unity Ascii Art Effect
 Simple Ascii Art image effect for Unity3d.
 
-Multiple color
+Multiple color  
 ![image004](Images/image001.jpg)
 
-not Multiple color
+Not multiple color  
 ![image004](Images/image002.jpg)
