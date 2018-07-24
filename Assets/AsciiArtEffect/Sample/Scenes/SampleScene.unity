@@ -421,10 +421,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shader: {fileID: 4800000, guid: c51b16da6185ee64d8a8a481e76e3c76, type: 3}
-  asciiRampTexture: {fileID: 2800000, guid: 8eacf9e39e5db2a459fea17a4bb60684, type: 3}
-  level: 93
+  asciiRampTexture: {fileID: 2800000, guid: 6f11c5e890cda02428f375c953e41c08, type: 3}
+  level: 10
   fontWidth: 8
   fontHeight: 16
+  fontScale: 1
   reverseLuminance: 0
   multipleColor: 1
 --- !u!20 &282840813
@@ -443,7 +444,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -470,7 +471,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 282840810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.58}
+  m_LocalPosition: {x: 0, y: 0, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -547,7 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axis: {x: 0, y: 1, z: 0}
-  speed: -30
+  speed: -60
 --- !u!4 &1330237168
 Transform:
   m_ObjectHideFlags: 0

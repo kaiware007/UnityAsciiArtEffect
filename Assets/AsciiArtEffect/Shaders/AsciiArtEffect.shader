@@ -58,11 +58,9 @@
 #endif
 
 #ifdef _REVERSE_LUM
-				//float lv = 1 - floor(lum * _Level) / _Level;
 				float lv = 1 - saturate(round(lum * (_Level-1)) / _Level);
 
 #else
-				//float lv = floor(lum * (_Level-1)) / _Level;
 				float lv = saturate(round(lum * (_Level-1)) / _Level);
 #endif
 
@@ -77,13 +75,7 @@
 				fixed3 hsv = rgb2hsv(col.rgb);
 				fixed3 rgb = hsv2rgb(fixed3(hsv.x, hsv.y, 1));
 				fontCol *= fixed4(rgb, 1);
-				//fontCol = fixed4(rgb, 1);	// test
 #endif
-				//fontCol = col;	// test
-				//fontCol *= fixed4(col.rgb, 1);
-				//fontCol = fixed4(lum, lum, lum,1);	// test
-				//fontCol *= fixed4(lum, lum, lum,1);	// test
-				//fontCol = fixed4(lv, lv, lv, 1);	// test
 
 				return fontCol;
 			}

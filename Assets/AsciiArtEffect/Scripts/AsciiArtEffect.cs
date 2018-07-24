@@ -7,9 +7,12 @@ using UnityEngine;
 public class AsciiArtEffect : CustomImageEffectBase {
 
     public Texture2D asciiRampTexture;
-    public int level = 70;
-    public int fontWidth = 7;
-    public int fontHeight = 16;
+    public int level = 70;          // 階調数(文字数)
+    public int fontWidth = 7;       // 文字の横幅
+    public int fontHeight = 16;     // 文字の縦幅
+    [Range(1,10)]
+    public int fontScale = 1;       // 文字のスケール
+
     /// <summary>
     /// 輝度の順番を反転する
     /// </summary>
@@ -32,11 +35,11 @@ public class AsciiArtEffect : CustomImageEffectBase {
     {
         material.SetTexture("_RampTex", asciiRampTexture);
         material.SetInt("_Level", level);
-        material.SetInt("_DivNumX", Screen.width / fontWidth);
-        material.SetInt("_DivNumY", Screen.height / fontHeight);
+        material.SetInt("_DivNumX", Screen.width / (fontWidth * fontScale));
+        material.SetInt("_DivNumY", Screen.height / (fontHeight * fontScale));
     }
 
-    private void OnValidate()
+    protected void UpdateKeyword()
     {
         if (reverseLuminance)
         {
@@ -55,7 +58,17 @@ public class AsciiArtEffect : CustomImageEffectBase {
         {
             material.DisableKeyword("_MULTI_COL");
         }
-        
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        UpdateKeyword();
+    }
+
+    private void OnValidate()
+    {
+        UpdateKeyword();
     }
 
     protected override void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -63,7 +76,7 @@ public class AsciiArtEffect : CustomImageEffectBase {
         UpdateMaterial();
 
         // 縮小
-        var smallTex = RenderTexture.GetTemporary(Screen.width / fontWidth, Screen.height / fontHeight);
+        var smallTex = RenderTexture.GetTemporary(Screen.width / (fontWidth * fontScale), Screen.height / (fontHeight * fontScale));
         smallTex.filterMode = FilterMode.Point;
 
         Graphics.Blit(source, smallTex);
